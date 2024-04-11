@@ -16,13 +16,7 @@ const formatListWithButtons = (
   return list.map((item, index) => (
     <React.Fragment key={index}>
       <button
-        style={{
-          textDecoration: 'none',
-          background: 'none',
-          border: 'none',
-          color: 'blue',
-          cursor: 'pointer',
-        }}
+       className="text-teal-300 cursor-pointer"
         onClick={() => onItemClick(item, index)}
       >
         {parseInt(item)}
@@ -62,6 +56,7 @@ export default function PDFScroll(): JSX.Element {
   };
 
   return (
+  <>
     <div>
       <div className="mb-10">
         <label htmlFor="file">Load PDF file:</label>
@@ -100,7 +95,7 @@ export default function PDFScroll(): JSX.Element {
                 >
                   {pdfLoaded ? (
                     <>
-                      <span className="absolute right-2 bottom-2  z-[2] scale-2">
+                      <span className="absolute right-2 bottom-2 scale-2">
                         <ExternalLink />
                       </span>
                       <span className="absolute right-0 top-[-4px]  p-[2px] rounded-l-md bg-white shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px]">
@@ -115,18 +110,20 @@ export default function PDFScroll(): JSX.Element {
         </Document>
       </div>
 
-      {isModalVisible && (
+ 
+    </div>
+         {isModalVisible && (
         <PDFModal
           key={`modal_${currentPage}`}
           title={'PDF Viewer'}
           visible={isModalVisible}
-          setVisible={closeModal}
+          closeModal={closeModal}
           pdfFile={pdfFile}
           displayAllPages={true}
           showZoomButtons={true}
           currentPage={currentPage}
         />
       )}
-    </div>
+    </>
   );
 }
