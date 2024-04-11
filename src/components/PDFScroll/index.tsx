@@ -34,7 +34,7 @@ const formatListWithButtons = (
 };
 
 export default function PDFScroll(): JSX.Element {
-  const [pdfFile, setPdfFile] = useState<PDFFile>('./sample.pdf');
+  const [pdfFile, setPdfFile] = useState<PDFFile>('./pdf/sample.pdf');
 
   const [isModalVisible, setModalVisible] = useState(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
